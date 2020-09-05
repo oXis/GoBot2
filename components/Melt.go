@@ -1,4 +1,4 @@
-package main
+package components
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"syscall"
 	"unicode/utf16"
 	"unsafe"
+	"os/exec"
 )
 
 func getMyName() (string, error) {
@@ -30,4 +31,5 @@ func main() {
   if err != nil {
   fmt.Println(err.Error())
   os.Exit(1)
+}
 }
