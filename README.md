@@ -19,7 +19,7 @@ After seeing another users Go based botnet i wanted to do more work on my GoBot,
 + More
 
 # Bot Features
-*virtual machine detection
+* virtual machine detection
 * Safe Error Handling
 * Have Unlimited Panels
 * Encoding and Obfuscation
