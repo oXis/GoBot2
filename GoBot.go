@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GoBot2/components"
+	"./components"
 	"time"
 )
 

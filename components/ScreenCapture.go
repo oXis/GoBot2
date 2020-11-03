@@ -16,7 +16,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/AllenDang/w32"
+	"github.com/gonutz/w32"
 )
 
 func screenRect() (image.Rectangle, error) {
